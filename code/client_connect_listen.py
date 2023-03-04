@@ -23,7 +23,7 @@ def main():
     )
     print(MQTT_HOST)
     mqtt_client.connect(MQTT_HOST, port=8883)
-    mqtt_client.subscribe("sometopic")
+    mqtt_client.subscribe("sometopic/#")
     mqtt_client.loop_forever()
 
 if __name__ == "__main__":
