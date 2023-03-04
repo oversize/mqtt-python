@@ -10,10 +10,6 @@ CA = Path(ROOTDIR).joinpath(f"../assets/AmazonRootCA1.cer")
 CERT = Path(ROOTDIR).joinpath(f"../assets/{CERTID}-certificate.pem.crt")
 KEY = Path(ROOTDIR).joinpath(f"../assets/{CERTID}-private.pem.key")
 
-print(CA.exists())
-print(CERT.exists())
-print(KEY.exists())
-
 def on_connect(client, userdata, flags, reasonCode, properties):
         print("Connection returned " + str(reasonCode))
 
@@ -27,7 +23,8 @@ def main():
     )
     print(MQTT_HOST)
     mqtt_client.connect(MQTT_HOST, port=8883)
-    mqtt_client.loop()
+    mqtt_client.subscribe("sometopic")
+    mqtt_client.loop_forever()
 
 if __name__ == "__main__":
     main()
